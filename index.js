@@ -22,4 +22,4 @@ app.get('/', (req, res) => {
 });
 
 // Export the app instead of listening
-app.listen(port, () => console.log(`server is running on port ${port}`);
+app.listen(port, () => console.log(`server is running on port ${port}`));
