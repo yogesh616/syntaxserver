@@ -4,7 +4,10 @@ const cheerio = require('cheerio');
 
  async function scrap(url) {
     try {
-        const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+       const browser = await puppeteer.launch({
+  executablePath: '/usr/bin/chromium-browser', // Use system Chromium
+  args: ['--no-sandbox', '--disable-setuid-sandbox'], // Required for Render
+});
         const page = await browser.newPage();
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
 
@@ -45,7 +48,10 @@ const cheerio = require('cheerio');
 
  async function scrapArticle(url) {
     try {
-        const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+        const browser = await puppeteer.launch({
+  executablePath: '/usr/bin/chromium-browser', // Use system Chromium
+  args: ['--no-sandbox', '--disable-setuid-sandbox'], // Required for Render
+});
         const page = await browser.newPage();
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
 
@@ -80,7 +86,10 @@ const cheerio = require('cheerio');
 
 async function getTags() {
     try {
-        const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+       const browser = await puppeteer.launch({
+  executablePath: '/usr/bin/chromium-browser', // Use system Chromium
+  args: ['--no-sandbox', '--disable-setuid-sandbox'], // Required for Render
+});
         const page = await browser.newPage();
         await page.goto('https://dev.to/tags', { waitUntil: 'networkidle2', timeout: 60000 });
         
@@ -106,7 +115,10 @@ async function getTags() {
 async function getUserDetails(username) {
     let browser; // Declare browser outside the try block
     try {
-        browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+        browser = await puppeteer.launch({
+  executablePath: '/usr/bin/chromium-browser', // Use system Chromium
+  args: ['--no-sandbox', '--disable-setuid-sandbox'], // Required for Render
+});
         const page = await browser.newPage();
         await page.goto(`https://dev.to/${username}/`, { waitUntil: 'networkidle2', timeout: 60000 });
 
