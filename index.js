@@ -21,4 +21,4 @@ app.get('/', (req, res) => {
 });
 
 // Export the app instead of listening
-module.exports = app;
+app.listen(port, () => console.log(`server is running on port ${port}`);
