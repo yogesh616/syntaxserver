@@ -3,6 +3,7 @@ const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 const cors = require('cors');
 const router = require('./Routes/scrap');
+const port = 3000;
 
 const app = express();
 
