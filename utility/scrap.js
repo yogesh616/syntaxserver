@@ -5,8 +5,8 @@ const cheerio = require('cheerio');
  async function scrap(url) {
     try {
        const browser = await puppeteer.launch({
-  executablePath: '/usr/bin/chromium-browser', // Use system Chromium
-  args: ['--no-sandbox', '--disable-setuid-sandbox'], // Required for Render
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  headless: true, // Ensure it's headless for server environments
 });
         const page = await browser.newPage();
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
@@ -48,9 +48,9 @@ const cheerio = require('cheerio');
 
  async function scrapArticle(url) {
     try {
-        const browser = await puppeteer.launch({
-  executablePath: '/usr/bin/chromium-browser', // Use system Chromium
-  args: ['--no-sandbox', '--disable-setuid-sandbox'], // Required for Render
+       const browser = await puppeteer.launch({
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  headless: true, // Ensure it's headless for server environments
 });
         const page = await browser.newPage();
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
@@ -86,9 +86,9 @@ const cheerio = require('cheerio');
 
 async function getTags() {
     try {
-       const browser = await puppeteer.launch({
-  executablePath: '/usr/bin/chromium-browser', // Use system Chromium
-  args: ['--no-sandbox', '--disable-setuid-sandbox'], // Required for Render
+      const browser = await puppeteer.launch({
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  headless: true, // Ensure it's headless for server environments
 });
         const page = await browser.newPage();
         await page.goto('https://dev.to/tags', { waitUntil: 'networkidle2', timeout: 60000 });
@@ -116,8 +116,8 @@ async function getUserDetails(username) {
     let browser; // Declare browser outside the try block
     try {
         browser = await puppeteer.launch({
-  executablePath: '/usr/bin/chromium-browser', // Use system Chromium
-  args: ['--no-sandbox', '--disable-setuid-sandbox'], // Required for Render
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  headless: true, // Ensure it's headless for server environments
 });
         const page = await browser.newPage();
         await page.goto(`https://dev.to/${username}/`, { waitUntil: 'networkidle2', timeout: 60000 });
