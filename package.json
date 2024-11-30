@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-     "postinstall": "apt-get update && apt-get install -y chromium"
+     "postinstall": ""
   },
   "keywords": [],
   "author": "",
